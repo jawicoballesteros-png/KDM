@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Folder 143</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#fff8fb;
+overflow:hidden;
+text-align:center;
+}
+
+.screen{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+}
+
+.active{
+display:flex;
+}
+
+h1{
+color:#ff5c9c;
+margin-bottom:20px;
+}
+
+.gif{
+width:250px;
+border-radius:20px;
+margin-bottom:20px;
+}
+
+.btn{
+padding:12px 30px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#ff8fc7,#ff5c9c);
+color:white;
+font-size:18px;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(255,92,156,.4);
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+.choice-container{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:20px;
+}
+
+.choice{
+cursor:pointer;
+}
+
+.choice img{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid pink;
+}
+
+.choice.selected img{
+border:6px solid hotpink;
+}
+
+input{
+padding:10px;
+border-radius:10px;
+border:2px solid pink;
+margin:10px;
+}
+
+.heart{
+position:absolute;
+color:pink;
+font-size:20px;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+</style>
+</head>
+<body>
+
+<!-- SCREEN 1 -->
+<div class="screen active" id="s1">
+<h1>HI HEHEHE</h1>
+
+<img src="CAT MEME.gif" class="gif">
+
+<button class="btn" onclick="next('s2')">CLICK ME</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen" id="s2">
+
+<h1>WOULD YOU LIKE TO GO OUT WITH ME FOR A DATE?</h1>
+
+<div style="display:flex;gap:20px">
+
+<button class="btn" onclick="next('s3')">
+YES
+</button>
+
+<button class="btn" id="noBtn">
+NO
+</button>
+
+</div>
+
+</div>
+
+<!-- SCREEN 3 -->
+
+<div class="screen" id="s3">
+
+<h1>YEHEYYY!!!</h1>
+
+<img src="BLUSHING MEME.gif" class="gif">
+
+<button class="btn" onclick="next('s4')">
+CLICK ME
+</button>
+
+</div>
+
+<!-- SCREEN 4 -->
+
+<div class="screen" id="s4">
+
+<h1>WHEN ARE YOU FREE?</h1>
+
+<div>
+
+<input type="date" id="date">
+
+<input type="time" id="time">
+
+</div>
+
+<button class="btn" onclick="saveDate()">
+CLICK ME
+</button>
+
+</div>
+
+<!-- SCREEN 5 -->
+
+<div class="screen" id="s5">
+
+<h1>WHERE DO YOU WANT TO EAT?</h1>
+
+<div class="choice-container">
+
+<div class="choice" onclick="pickRestaurant(this,'Jollibee')">
+<img src="jollibee.jpg">
+<p>Jollibee</p>
+</div>
+
+<div class="choice" onclick="pickRestaurant(this,'McDonalds')">
+<img src="mcdo.jpg">
+<p>McDonalds</p>
+</div>
+
+<div class="choice" onclick="pickRestaurant(this,'Samgyupsal')">
+<img src="samgyup.jpg">
+<p>Samgyupsal</p>
+</div>
+
+<div class="choice" onclick="pickRestaurant(this,'KFC')">
+<img src="KFC.jpg">
+<p>KFC</p>
+</div>
+
+<div class="choice" onclick="pickRestaurant(this,'Mang Inasal')">
+<img src="MI.jpg">
+<p>Mang Inasal</p>
+</div>
+
+<div class="choice" onclick="pickRestaurant(this,'Chowking')">
+<img src="1.jpg">
+<p>Chowking</p>
+</div>
+
+<div class="choice" onclick="pickRestaurant(this,'Greenwhich')">
+<img src="2.jpg">
+<p>Greenwhich</p>
+</div>
+
+<div class="choice" onclick="pickRestaurant(this,'K-Mart')">
+<img src="3.jpg">
+<p>K-Mart</p>
+</div>
+
+
+</div>
+
+<button class="btn" onclick="next('s6')">
+CONTINUE
+</button>
+
+</div>
+
+<!-- SCREEN 6 -->
+
+<div class="screen" id="s6">
+
+<h1>WHAT ACTIVITIES DO YOU WANT TO DO AFTER EATING?</h1>
+
+<div class="choice-container">
+
+<div class="choice" onclick="pickActivity(this,'Movie')">
+<img src="movie.jpg">
+<p>Movie</p>
+</div>
+
+<div class="choice" onclick="pickActivity(this,'Arcade')">
+<img src="arcade.jpg">
+<p>Arcade</p>
+</div>
+
+<div class="choice" onclick="pickActivity(this,'Capitol Street Foods')">
+<img src="walk.jpg">
+<p>Capitol Street Foods</p>
+</div>
+
+<div class="choice" onclick="pickActivity(this,'All of the Choices')">
+<img src="4.jpg">
+<p>All of the Choices</p>
+</div>
+
+
+</div>
+
+<button class="btn" onclick="next('s7')">
+CONTINUE
+</button>
+
+</div>
+
+<!-- SCREEN 7 -->
+
+<div class="screen" id="s7">
+
+<img src="END.gif" class="gif">
+
+<h1>See You Soon!!</h1>
+
+<p id="summary"></p>
+
+</div>
+
+<script>
+
+let answers={
+date:"",
+time:"",
+restaurant:"",
+activity:""
+};
+
+function next(id){
+
+document.querySelectorAll('.screen')
+.forEach(s=>s.classList.remove('active'));
+
+document.getElementById(id)
+.classList.add('active');
+
+createHearts();
+
+}
+
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+
+let x=Math.random()*300-150;
+let y=Math.random()*300-150;
+
+noBtn.style.transform=
+`translate(${x}px,${y}px)`;
+
+});
+
+function saveDate(){
+
+answers.date=document.getElementById("date").value;
+answers.time=document.getElementById("time").value;
+
+next('s5');
+
+}
+
+function pickRestaurant(el,name){
+
+document.querySelectorAll("#s5 .choice")
+.forEach(c=>c.classList.remove("selected"));
+
+el.classList.add("selected");
+
+answers.restaurant=name;
+
+}
+
+function pickActivity(el,name){
+
+document.querySelectorAll("#s6 .choice")
+.forEach(c=>c.classList.remove("selected"));
+
+el.classList.add("selected");
+
+answers.activity=name;
+
+}
+
+function createHearts(){
+
+for(let i=0;i<8;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=
+Math.random()*3+2+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+}
+
+}
+
+document.querySelector("#s6 .btn")
+.addEventListener("click",()=>{
+
+document.getElementById("summary").innerHTML=`
+<b>DONT FORGET 💕</b><br><br>
+
+ Date: ${answers.date}<br>
+
+ Time: ${answers.time}<br>
+
+ Restaurant: ${answers.restaurant}<br>
+
+ Activity: ${answers.activity}
+`;
+
+});
+
+</script>
+
+</body>
+</html>
